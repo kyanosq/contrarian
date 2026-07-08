@@ -1,43 +1,47 @@
-# Agent Triad Loop
+# Agent Skills
 
 Languages: [English](#english) | [简体中文](#简体中文)
 
+Collection version: `0.1.0`
+
 ## English
 
-`agent-triad-loop` is a portable agent skill for running a long-lived development loop with three explicit roles:
+This repository is a personal collection of portable agent skills. Each skill lives under `skills/<skill-name>` and can be symlinked into agent runtimes such as Codex and Cursor.
 
-- **Planner** turns a compact user goal into scope, artifacts, and acceptance criteria.
-- **Generator** implements one bounded sprint at a time without changing the agreed criteria.
-- **Evaluator** verifies the running product like a real user, records evidence, and either fails the sprint with actionable critique or marks criteria as passed.
+### Skills
 
-The protocol is designed to work across multiple agent runtimes. It supports separate Planner / Generator / Evaluator agents, a coordinator-driven multi-agent setup, or a single agent that rotates roles when subagents are unavailable.
+| Skill | Version | Purpose |
+| --- | --- | --- |
+| `agent-triad-loop` | `0.1.0` | Planner / Generator / Evaluator loop for long-running development. |
+| `adversarial-brainstorm` | `0.1.0` | Multi-agent adversarial discussion for stronger decisions and ideas. |
+| `adversarial-bug-review` | `0.1.0` | Targeted bug hunting with a consecutive-noise stop rule. |
 
-### Contents
+### Install
 
-- `skill/agent-triad-loop/SKILL.md` - the installable skill instructions.
-- `skill/agent-triad-loop/references/long-running-harness-notes.md` - background notes summarizing long-running harness patterns and tradeoffs.
-
-### Compatibility
-
-The skill uses file-based handoff instead of chat-memory handoff, so it can run in:
-
-- Codex or other systems with real subagents.
-- Cursor or other single-agent environments through role rotation.
-- CLI agent workflows where each role is a separate process.
-- Hybrid flows where one coordinator assigns work to external agents and verifies the resulting artifacts.
-
-### Installation
-
-Copy or symlink `skill/agent-triad-loop` into your agent's skill directory:
+Clone once, then install all skills as symlinks:
 
 ```bash
-cp -R skill/agent-triad-loop ~/.codex/skills/
-cp -R skill/agent-triad-loop ~/.cursor/skills/
+git clone https://github.com/kyanosq/agent-skills.git ~/agent-skills
+~/agent-skills/scripts/install.sh
 ```
 
-### Usage
+The installer links every directory in `skills/` into:
 
-Start a new agent session and explicitly ask it to use the skill:
+- `~/.codex/skills/`
+- `~/.cursor/skills/`
+
+### Update
+
+```bash
+cd ~/agent-skills
+scripts/update.sh
+```
+
+`update.sh` runs `git pull --ff-only` and refreshes the symlinks.
+
+### Use A Skill
+
+Start a new agent session and explicitly name the skill:
 
 ```text
 Use agent-triad-loop for this project.
@@ -45,56 +49,52 @@ Start as Planner, create docs/agent-triad-loop/plan.md, feature_list.json, and t
 Then run the Generator -> Evaluator loop until the agreed acceptance criteria pass or the iteration cap is reached.
 ```
 
-For environments with separate agents, assign Planner, Generator, and Evaluator to separate contexts. For single-agent environments, ask the agent to rotate roles and write each role's output to disk before switching.
+```text
+Use adversarial-brainstorm to compare competing approaches before we choose a direction.
+```
 
-### Core Artifact Contract
-
-Use ordinary project files as the shared interface between agents:
-
-- `docs/agent-triad-loop/plan.md`
-- `docs/agent-triad-loop/feature_list.json`
-- `docs/agent-triad-loop/contracts/<sprint>.md`
-- `docs/agent-triad-loop/evaluations/<sprint>-round-<n>.md`
-- `docs/agent-triad-loop/progress.md`
-
-Any runtime can implement the loop as long as roles honor those files and do not weaken acceptance criteria without evidence.
+```text
+Use adversarial-bug-review on this feature. Target correctness regressions and stop after 5 consecutive noise findings.
+```
 
 ## 简体中文
 
-`agent-triad-loop` 是一个可移植的 agent skill，用于运行长时迭代开发循环。它把开发流程拆成三个明确角色：
+这个仓库是一个个人 agent skills 集合。每个 skill 都放在 `skills/<skill-name>` 下，可以软链接安装到 Codex、Cursor 等 agent runtime。
 
-- **Planner（规划者）**：把简短目标转成范围、产物、验收标准和冲刺顺序。
-- **Generator（构建者）**：一次实现一个有边界的 sprint，不修改已经约定的验收标准。
-- **Evaluator（评估者）**：像真实用户一样验证运行中的产物，记录证据；不通过就给出可执行 critique，通过才标记验收项。
+### Skills
 
-这个协议面向多种 agent 运行环境：既支持 Planner / Generator / Evaluator 三个独立 agent，也支持 coordinator 调度的多 agent 流程；如果环境不能启动子 agent，也可以由单个 agent 串行切换角色。
-
-### 内容
-
-- `skill/agent-triad-loop/SKILL.md`：可安装的 skill 指令。
-- `skill/agent-triad-loop/references/long-running-harness-notes.md`：长时 harness 模式、权衡和评估方法的背景笔记。
-
-### 兼容性
-
-这个 skill 使用文件交接，而不是依赖聊天上下文记忆，因此可以运行在：
-
-- Codex 或其他支持真实子 agent 的系统。
-- Cursor 或其他单 agent 环境，通过角色轮换执行。
-- CLI agent 工作流，其中每个角色都是独立进程。
-- 混合模式：一个 coordinator 分配任务给外部 agent，并最终验证结果。
+| Skill | 版本 | 用途 |
+| --- | --- | --- |
+| `agent-triad-loop` | `0.1.0` | Planner / Generator / Evaluator 长时开发循环。 |
+| `adversarial-brainstorm` | `0.1.0` | 多智能体对抗性讨论，用来产出更强决策和想法。 |
+| `adversarial-bug-review` | `0.1.0` | 目标驱动 bug 审查，带连续噪音发现停止规则。 |
 
 ### 安装
 
-把 `skill/agent-triad-loop` 复制或软链接到你的 agent skill 目录：
+克隆一次仓库，然后把全部 skills 软链接安装：
 
 ```bash
-cp -R skill/agent-triad-loop ~/.codex/skills/
-cp -R skill/agent-triad-loop ~/.cursor/skills/
+git clone https://github.com/kyanosq/agent-skills.git ~/agent-skills
+~/agent-skills/scripts/install.sh
 ```
 
-### 启动方式
+安装脚本会把 `skills/` 下的每个目录链接到：
 
-开启一个新的 agent 会话，并明确要求它使用这个 skill：
+- `~/.codex/skills/`
+- `~/.cursor/skills/`
+
+### 更新
+
+```bash
+cd ~/agent-skills
+scripts/update.sh
+```
+
+`update.sh` 会执行 `git pull --ff-only` 并刷新软链接。
+
+### 启动 Skill
+
+开启新的 agent 会话，并明确点名 skill：
 
 ```text
 使用 agent-triad-loop 来开发这个项目。
@@ -102,16 +102,10 @@ cp -R skill/agent-triad-loop ~/.cursor/skills/
 然后按 Generator -> Evaluator 循环迭代，直到约定的验收标准通过，或达到迭代上限。
 ```
 
-如果环境支持多个 agent，就把 Planner、Generator、Evaluator 分配到独立上下文。如果环境只有单 agent，就要求它进行角色轮换，并在每次切换角色前把当前角色产物写入文件。
+```text
+使用 adversarial-brainstorm 来比较几个候选方向，然后再决定实现路线。
+```
 
-### 核心交接文件
-
-使用普通项目文件作为 agent 之间的共享接口：
-
-- `docs/agent-triad-loop/plan.md`
-- `docs/agent-triad-loop/feature_list.json`
-- `docs/agent-triad-loop/contracts/<sprint>.md`
-- `docs/agent-triad-loop/evaluations/<sprint>-round-<n>.md`
-- `docs/agent-triad-loop/progress.md`
-
-只要各个角色遵守这些文件约定，并且不在缺少证据的情况下削弱验收标准，任何 agent 运行时都可以实现这个循环。
+```text
+使用 adversarial-bug-review 审查这个功能。目标是正确性回归，连续 5 个噪音发现后停止。
+```
