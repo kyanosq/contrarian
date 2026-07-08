@@ -1,11 +1,6 @@
-# Anthropic-Style Long-Running Harness Notes
+# Long-Running Harness Notes
 
 These notes summarize the ideas behind the triad loop: long-running agent handoff, feature lists, real-environment validation, and adversarial evaluation.
-
-Sources:
-
-1. *Effective harnesses for long-running agents* — Justin Young, Anthropic Engineering, 2025-11-26.
-2. *Harness design for long-running application development* — Prithvi Rajasekaran, Anthropic Labs, 2026-03-24.
 
 ## Long-Running Agent Failure Modes
 

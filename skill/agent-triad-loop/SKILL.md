@@ -9,7 +9,7 @@ Run development as a closed loop: plan, build, evaluate, and repeat until the ar
 
 Use this only when the task is worth the overhead: repeated work, real validation available, and high enough value to justify multiple passes. For one-off scripts, small fixes, or early prototypes, use a lightweight plan plus direct verification instead.
 
-For background and calibration notes, read `references/anthropic-harness-notes.md` when designing a new loop, tuning the evaluator, or deciding whether the heavy protocol is justified.
+For background and calibration notes, read `references/long-running-harness-notes.md` when designing a new loop, tuning the evaluator, or deciding whether the heavy protocol is justified.
 
 ## Roles
 

@@ -11,7 +11,7 @@ The protocol is designed to work across multiple agent runtimes. It supports sep
 ## What It Contains
 
 - `skill/agent-triad-loop/SKILL.md` - the installable skill instructions.
-- `skill/agent-triad-loop/references/anthropic-harness-notes.md` - background notes summarizing Anthropic-style long-running harness patterns and tradeoffs.
+- `skill/agent-triad-loop/references/long-running-harness-notes.md` - background notes summarizing long-running harness patterns and tradeoffs.
 
 ## Compatibility
 
