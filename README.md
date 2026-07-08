@@ -2,7 +2,7 @@
 
 Languages: [English](#english) | [简体中文](#简体中文)
 
-Collection version: `0.1.0`
+Collection version: `0.2.0`
 
 ## English
 
@@ -21,7 +21,7 @@ Collection version: `0.1.0`
 
 | Skill | Version | Purpose |
 | --- | --- | --- |
-| `contrarian-loop` | `0.1.0` | Planner / Generator / Evaluator loop for long-running development. |
+| `contrarian-loop` | `0.2.0` | Unified Planner / Generator / Evaluator loop for long-running development, delegated agent work, and app polish. |
 | `contrarian-brainstorm` | `0.1.0` | Multi-agent adversarial discussion for stronger decisions and ideas. |
 | `contrarian-review` | `0.1.0` | Targeted bug hunting with a consecutive-noise stop rule. |
 
@@ -58,6 +58,8 @@ Start as Planner, create docs/contrarian-loop/plan.md, feature_list.json, and th
 Then run the Generator -> Evaluator loop until the agreed acceptance criteria pass or the iteration cap is reached.
 ```
 
+`contrarian-loop` is the single loop entrypoint. Put generic harness constraints, external-agent delegation rules, and app-polish screenshot evidence into its loop envelope and sprint contracts instead of stacking another loop skill beside it.
+
 ```text
 Use contrarian-brainstorm to compare competing approaches before we choose a direction.
 ```
@@ -83,7 +85,7 @@ Use contrarian-review on this feature. Target correctness regressions and stop a
 
 | Skill | 版本 | 用途 |
 | --- | --- | --- |
-| `contrarian-loop` | `0.1.0` | Planner / Generator / Evaluator 长时开发循环。 |
+| `contrarian-loop` | `0.2.0` | 统一的 Planner / Generator / Evaluator 长时开发、外部 agent 委托和 App 打磨循环。 |
 | `contrarian-brainstorm` | `0.1.0` | 多智能体对抗性讨论，用来产出更强决策和想法。 |
 | `contrarian-review` | `0.1.0` | 目标驱动 bug 审查，带连续噪音发现停止规则。 |
 
@@ -119,6 +121,8 @@ scripts/update.sh
 先以 Planner 身份创建 docs/contrarian-loop/plan.md、feature_list.json 和第一个 sprint contract。
 然后按 Generator -> Evaluator 循环迭代，直到约定的验收标准通过，或达到迭代上限。
 ```
+
+`contrarian-loop` 是唯一循环入口。通用 harness 约束、外部 agent 委托规则、App 打磨和截图证据都写入它的 loop envelope 与 sprint contract，不再叠加另一份 loop skill。
 
 ```text
 使用 contrarian-brainstorm 来比较几个候选方向，然后再决定实现路线。

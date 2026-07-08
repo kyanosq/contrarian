@@ -1,6 +1,6 @@
 # Long-Running Harness Notes
 
-These notes summarize the ideas behind the contrarian loop: long-running agent handoff, feature lists, real-environment validation, and adversarial evaluation.
+These notes summarize the ideas behind the contrarian loop: long-running agent handoff, feature lists, real-environment validation, adversarial evaluation, bounded external-agent delegation, and app-polish evidence.
 
 ## Long-Running Agent Failure Modes
 
@@ -14,6 +14,18 @@ The countermeasure is a durable handoff protocol:
 - Initialize the project with runnable setup, progress files, git history, and a feature list.
 - Store acceptance criteria in a structured file such as `feature_list.json`.
 - Require each role pass to read progress, run baseline smoke checks, pick one bounded item, and update files before exiting.
+
+## Single Loop Principle
+
+Use `contrarian-loop` as the single long-running development loop. Do not maintain separate generic harness and app-polish loop skills beside it. When a task needs those behaviors, express them inside the loop envelope and sprint contract:
+
+- whether the task justifies a loop at all
+- what budget and stop condition apply
+- which external agents may run
+- what permissions they have
+- which app, browser, simulator, API, database, or CLI surfaces prove the result
+
+This keeps future agents from stacking overlapping protocols and losing the handoff boundary.
 
 ## Feature List Pattern
 
@@ -51,6 +63,17 @@ Before implementation, Generator and Evaluator should agree on a Sprint Contract
 
 The contract bridges a broad product spec and testable implementation work.
 
+Add external-agent constraints to the contract when delegation is used:
+
+- absolute target directory
+- files or directories in scope
+- commands to run
+- report path and completion marker
+- no commit, push, reset, discard, submit, or publish unless the user explicitly assigned that authority
+- screenshots, logs, simulator names, URLs, or other evidence expected from the pass
+
+Coordinator verification still matters. External reports are evidence to check, not truth to trust.
+
 ## Evaluation Calibration
 
 Evaluator prompts usually need tuning. Common weak evaluator behavior includes:
@@ -70,6 +93,24 @@ Useful dimensions:
 - originality
 - craft
 - code quality
+- operational safety
+
+## App And UI Polish Evidence
+
+Visual polish is easy to overclaim. Require fresh evidence:
+
+- cold-launch the app or page before screenshot capture
+- include simulator/device name or browser viewport when relevant
+- check console, logs, or crash output where possible
+- recapture when the image shows stale navigation state, a previous app, wrong route, or old server output
+- prefer user-like workflows over isolated component inspection
+
+For multi-round app polish, a useful progression is:
+
+1. primary workflow with docs, tests, and build proof
+2. interaction, accessibility, visuals, copy, and state polish
+3. self-review pass with fewer coordinator interventions
+4. focused slices such as motion, Dynamic Type, localization, performance, screenshots, or store-readiness surfaces
 
 ## Cost And Scope Control
 

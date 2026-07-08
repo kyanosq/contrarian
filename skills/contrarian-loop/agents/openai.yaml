@@ -1,4 +1,4 @@
 interface:
   display_name: "Contrarian Loop"
-  short_description: "Planner/Generator/Evaluator loop"
-  default_prompt: "Use $contrarian-loop for this project and run Planner, Generator, and Evaluator passes until acceptance criteria pass."
+  short_description: "Unified multi-round development, delegation, and polish loop"
+  default_prompt: "Use $contrarian-loop for this project. Start with the fit check and loop envelope, then run Planner, Generator, and Evaluator passes until acceptance criteria pass or the stop condition is reached."
