@@ -1,9 +1,9 @@
 ---
-name: agent-triad-loop
-description: Multi-agent iterative development harness using Planner, Generator, and Evaluator roles. Use when a user asks for long-running autonomous development, agent loops, multi-agent implementation, Planner/Generator/Evaluator workflows, sprint contracts, adversarial QA, real-environment validation, or polishing a product until it meets launch-quality acceptance criteria. Supports separate agents, coordinator-managed agents, CLI agents, and single-agent role rotation when subagents are unavailable.
+name: council-loop
+description: Use when a user asks for long-running autonomous development, agent loops, multi-agent implementation, Planner/Generator/Evaluator workflows, sprint contracts, adversarial QA, real-environment validation, or polishing a product until launch-quality acceptance criteria pass.
 ---
 
-# Agent Triad Loop
+# Council Loop
 
 Run development as a closed loop: plan, build, evaluate, and repeat until the artifact is actually usable.
 
@@ -16,8 +16,8 @@ For background and calibration notes, read `references/long-running-harness-note
 ### Planner
 
 - Convert the user goal into product scope, feature list, user stories, data model notes, and sprint order.
-- Write `docs/agent-triad-loop/plan.md`.
-- Create or update `docs/agent-triad-loop/feature_list.json`.
+- Write `docs/council-loop/plan.md`.
+- Create or update `docs/council-loop/feature_list.json`.
 - Keep acceptance criteria ambitious but testable.
 - Avoid fragile implementation details unless the user or repository makes them mandatory.
 - Never delete or weaken acceptance criteria. Only mark an item passed with evidence.
@@ -25,7 +25,7 @@ For background and calibration notes, read `references/long-running-harness-note
 ### Generator
 
 - Implement one sprint or one feature at a time.
-- Before coding, negotiate a Sprint Contract with Evaluator and write it to `docs/agent-triad-loop/contracts/<sprint>.md`.
+- Before coding, negotiate a Sprint Contract with Evaluator and write it to `docs/council-loop/contracts/<sprint>.md`.
 - Do not change acceptance criteria, scoring rules, or evaluation thresholds.
 - If baseline smoke tests fail at session start, fix the baseline before adding new scope.
 - End each sprint with code in a mergeable state, progress updated, and verification commands recorded.
@@ -35,7 +35,7 @@ For background and calibration notes, read `references/long-running-harness-note
 - Verify the running artifact as a real user, not by reading the diff alone.
 - Use the strongest real tools available: browser automation, simulator, CLI commands, API calls, database checks, screenshots, logs, or test suites.
 - Score against hard thresholds. If any required dimension fails, the sprint fails.
-- Write detailed critique with exact evidence and file or behavior references to `docs/agent-triad-loop/evaluations/<sprint>-round-<n>.md`.
+- Write detailed critique with exact evidence and file or behavior references to `docs/council-loop/evaluations/<sprint>-round-<n>.md`.
 - Do not edit code during evaluation. Record findings only.
 
 ## Runtime Modes
@@ -73,7 +73,7 @@ Use this when one primary agent delegates bounded work to external CLI agents.
 Use this default layout unless the repository already has an equivalent convention:
 
 ```text
-docs/agent-triad-loop/
+docs/council-loop/
   plan.md
   feature_list.json
   progress.md
@@ -128,7 +128,7 @@ Any hard-threshold miss fails the round. Evaluator must stay skeptical: if somet
 At the start of each role pass:
 
 1. Identify the repository and current branch.
-2. Read `docs/agent-triad-loop/progress.md`, recent git history, and the active contract.
+2. Read `docs/council-loop/progress.md`, recent git history, and the active contract.
 3. Read `feature_list.json` and choose the highest-priority pending item.
 4. Run the repository's baseline setup, test, or smoke command.
 5. Fix a broken baseline before starting new feature work.

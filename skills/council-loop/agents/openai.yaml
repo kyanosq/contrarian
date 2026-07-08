@@ -1,0 +1,4 @@
+interface:
+  display_name: "Council Loop"
+  short_description: "Planner/Generator/Evaluator loop"
+  default_prompt: "Use $council-loop for this project and run Planner, Generator, and Evaluator passes until acceptance criteria pass."

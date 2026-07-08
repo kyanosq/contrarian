@@ -1,9 +1,9 @@
 ---
-name: adversarial-bug-review
+name: council-review
 description: Use when a user wants adversarial bug hunting, red-team code review, target-driven QA, suspicious edge-case review, or an audit loop that continues until recent findings are false positives, duplicates, or immaterial issues.
 ---
 
-# Adversarial Bug Review
+# Council Review
 
 Run bug review as a target-driven adversarial loop. The reviewer looks for real defects, verifies evidence, and stops only when the review stops producing meaningful findings.
 
@@ -81,7 +81,7 @@ N = <number>; stopped after <count> consecutive noise findings.
 ## Recommendation
 ```
 
-Write durable reviews to `docs/adversarial-bug-review/<target>.md` when they affect release or merge decisions.
+Write durable reviews to `docs/council-review/<target>.md` when they affect release or merge decisions.
 
 ## Common Mistakes
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Council Brainstorm"
+  short_description: "Structured multi-agent idea critique"
+  default_prompt: "Use $council-brainstorm to compare competing directions before we choose an implementation path."

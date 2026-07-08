@@ -1,6 +1,6 @@
 # Long-Running Harness Notes
 
-These notes summarize the ideas behind the triad loop: long-running agent handoff, feature lists, real-environment validation, and adversarial evaluation.
+These notes summarize the ideas behind the council loop: long-running agent handoff, feature lists, real-environment validation, and adversarial evaluation.
 
 ## Long-Running Agent Failure Modes
 

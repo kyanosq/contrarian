@@ -1,9 +1,9 @@
 ---
-name: adversarial-brainstorm
+name: council-brainstorm
 description: Use when a user wants multi-agent brainstorming, adversarial discussion, devil's-advocate critique, competing proposals, red-team ideation, or decision exploration before implementation, planning, product strategy, architecture, or research work.
 ---
 
-# Adversarial Brainstorm
+# Council Brainstorm
 
 Use structured disagreement to improve ideas before committing to a direction. The goal is not debate theater; it is to expose hidden assumptions, generate stronger options, and converge on a decision with known tradeoffs.
 
@@ -26,7 +26,7 @@ Use separate agents when available. In a single-agent environment, rotate roles 
 5. Let proposers revise once after critique.
 6. Synthesize the best option, rejected alternatives, risks, and next validation step.
 
-Write the result to `docs/adversarial-brainstorm/<topic>.md` when the decision affects future work.
+Write the result to `docs/council-brainstorm/<topic>.md` when the decision affects future work.
 
 ## Output Shape
 

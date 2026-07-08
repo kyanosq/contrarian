@@ -1,4 +1,0 @@
-interface:
-  display_name: "Adversarial Brainstorm"
-  short_description: "Structured multi-agent idea critique"
-  default_prompt: "Use $adversarial-brainstorm to compare competing directions before we choose an implementation path."

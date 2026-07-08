@@ -1,4 +1,0 @@
-interface:
-  display_name: "Adversarial Bug Review"
-  short_description: "Targeted bug hunting with a stop rule"
-  default_prompt: "Use $adversarial-bug-review to audit this target until the consecutive-noise stop rule is reached."
